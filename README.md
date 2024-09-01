@@ -35,7 +35,7 @@ This project requires several Python libraries. All required libraries are liste
     * **psutil** (for monitoring system resources like battery)
     * **requests** (for checking internet connectivity)
 
-- **Step 3:** Configure the Application
+- **Step 4:** Configure the Application
   - No additional configuration is needed, but you can customize settings in the respective script files if required (e.g., screenshot intervals, inactivity thresholds).
 
 ## Running the Application
