@@ -4,7 +4,6 @@ import time
 import datetime
 import os
 
-# Path to log file
 log_file = os.path.join(os.getcwd(), "status_log.txt")
 
 def log_status_change(status):
@@ -26,13 +25,11 @@ def check_battery_status():
 
 def check_internet_connection(last_status):
     try:
-        # Check for an active internet connection by making a request to a reliable site
         requests.get("https://www.google.com", timeout=5)
         current_status = "connected"
     except (requests.ConnectionError, requests.Timeout):
         current_status = "disconnected"
     
-    # Log only if the status has changed
     if current_status != last_status:
         log_status_change(f"Internet is {current_status}.")
     
@@ -47,17 +44,13 @@ def monitor_system_status():
     while True:
         current_time = time.time()
 
-        # Check internet status every 5 seconds
         last_internet_status = check_internet_connection(last_internet_status)
         
-        # Check battery status every 60 seconds
         if current_time - last_battery_check_time >= battery_check_interval:
             check_battery_status()
             last_battery_check_time = current_time
 
-        # Sleep for the internet check interval
         time.sleep(internet_check_interval)
 
-# Example usage (in main.py):
 if __name__ == "__main__":
     monitor_system_status()
