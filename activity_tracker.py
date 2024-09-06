@@ -4,22 +4,18 @@ import time
 import threading
 import os
 
-# Configuration
 config = {
     "capture_screenshots": True,
     "blur_screenshots": False,
-    "screenshot_interval": 60,  # in seconds
-    "inactive_time_threshold": 5,  # in seconds
+    "screenshot_interval": 60,  
+    "inactive_time_threshold": 5,  
 }
 
-# Define the path to the screenshots folder
 screenshots_folder = os.path.join(os.getcwd(), "screenshots")
 
-# Ensure the folder exists
 if not os.path.exists(screenshots_folder):
     os.makedirs(screenshots_folder)
 
-# Variables to store the last known mouse position and activity state
 last_activity_time = time.time()
 is_active = True
 
